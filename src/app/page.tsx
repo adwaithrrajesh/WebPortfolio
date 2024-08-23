@@ -1,10 +1,31 @@
+"use client";
+
 import Navbar from "../components/navbar";
 import HomePage from "../components/homepage";
 import About from "../components/about";
 import Skills from "../components/skills";
 import Contact from "../components/contact";
+import { useEffect, useState } from "react";
+import Loading from "@/components/loading";
 
 export default function Home() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Adjust the delay as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+
   return (
     <>
       <Navbar />

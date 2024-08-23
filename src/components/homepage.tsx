@@ -78,7 +78,7 @@ const HomePage = () => {
   const buttonBackgroundColor = calculateColor(0); // Use grey for background based on scroll
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center "> {/* Adjusted margin-bottom */}
+    <div className="min-h-screen flex flex-col justify-center items-center mt-1"> {/* Adjusted margin-bottom */}
       <motion.div
         className="my-8 w-40 h-40 md:w-60 md:h-60 lg:w-80 lg:h-80 rounded-full overflow-hidden"
         initial={initialAnimation}
