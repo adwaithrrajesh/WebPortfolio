@@ -3,13 +3,35 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { FaReact, FaNodeJs, FaDocker } from 'react-icons/fa';
+import { SiTypescript, SiNextdotjs} from 'react-icons/si';
 
 const skills = [
-  { title: 'Frontend Web Development', description: 'Building responsive and accessible user interfaces.' },
-  { title: 'Backend Development', description: 'Creating robust and scalable server-side applications.' },
-  { title: 'Mobile Application Development', description: 'Crafting smooth and efficient mobile experiences.' },
-  { title: 'DevOps', description: 'Automating and optimizing development pipelines.' },
-  { title: 'System Design', description: 'Most efficient and optimised system design.' }
+  {
+    title: 'Frontend Web Development',
+    description: 'Building responsive and accessible user interfaces.',
+    icons: [<FaReact key="react" />, <SiNextdotjs key="next" />]
+  },
+  {
+    title: 'Backend Development',
+    description: 'Creating robust and scalable server-side applications.',
+    icons: [<FaNodeJs key="node" />, <SiTypescript key="typescript" />]
+  },
+  {
+    title: 'Mobile Application Development',
+    description: 'Crafting smooth and efficient mobile experiences.',
+    icons: []
+  },
+  {
+    title: 'DevOps',
+    description: 'Automating and optimizing development pipelines.',
+    icons: []
+  },
+  {
+    title: 'System Design',
+    description: 'Most efficient and optimised system design.',
+    icons: []
+  }
 ];
 
 const Skills: React.FC = () => {
@@ -68,6 +90,15 @@ const Skills: React.FC = () => {
             <div className="relative z-10 p-4">
               <h3 className="text-2xl font-bold text-white mb-3">{skill.title}</h3>
               <p className="text-gray-300">{skill.description}</p>
+            </div>
+
+            {/* Icons */}
+            <div className="absolute top-4 right-4 flex flex-wrap gap-2">
+              {skill.icons.map((icon, i) => (
+                <div key={i} className="text-white text-xl">
+                  {icon}
+                </div>
+              ))}
             </div>
 
             {/* Floating Icons or Decorative Elements */}

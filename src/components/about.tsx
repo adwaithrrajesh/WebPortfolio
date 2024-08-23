@@ -42,7 +42,7 @@ const About = () => {
         key={index}
         style={{
           color: calculateLetterColor(index),
-          transition: 'color 0.5s ease',
+          transition: 'color 0.3s ease',
         }}
       >
         {char}

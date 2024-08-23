@@ -31,23 +31,19 @@ const Contact: React.FC = () => {
           <h2 className="text-3xl font-bold text-center lg:text-left text-indigo-400">Connect with Me</h2>
           <div className="flex items-center space-x-4">
             <FaPhone className="text-3xl text-teal-400" />
-            <p className="text-lg">+1 (234) 567-8901</p>
+            <p className="text-lg">+91 7994734828</p>
           </div>
           <div className="flex items-center space-x-4">
             <FaEnvelope className="text-3xl text-teal-400" />
-            <p className="text-lg">email@example.com</p>
+            <p className="text-lg">adwaithrrajesh.k@gmail.com</p>
           </div>
           <div className="flex items-center space-x-4">
             <FaGithub className="text-3xl text-teal-400" />
-            <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline">github.com/username</a>
+            <a href="https://github.com/adwaithrrajesh" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline">github.com/adwaithrrajesh</a>
           </div>
           <div className="flex items-center space-x-4">
             <FaLinkedin className="text-3xl text-teal-400" />
-            <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline">linkedin.com/in/username</a>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FaTwitter className="text-3xl text-teal-400" />
-            <a href="https://twitter.com/username" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline">twitter.com/username</a>
+            <a href="https://www.linkedin.com/in/adwaith-r-rajesh-333545243/" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline">linkedin.com/in/adwaithrrajesh</a>
           </div>
         </div>
 
