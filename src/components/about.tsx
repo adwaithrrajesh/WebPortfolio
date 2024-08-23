@@ -24,12 +24,12 @@ const About = () => {
   }, [controls]);
 
   const calculateLetterColor = (index: number) => {
-    const offset = -100;
+    const offset = 0;
     const scrollPosition = scrollY - offset;
     const letterTransitionPoint = index * 2;
 
     if (scrollPosition >= letterTransitionPoint) {
-      return `rgb(225, 225, 255)`;
+      return `white`;
     } else {
       const greyValue = 50 + (scrollPosition - letterTransitionPoint) * 0;
       return `rgb(${greyValue}, ${greyValue}, ${greyValue})`;
@@ -42,7 +42,7 @@ const About = () => {
         key={index}
         style={{
           color: calculateLetterColor(index),
-          transition: 'color 0.3s ease',
+          transition: 'color 0.5s ease',
         }}
       >
         {char}
@@ -50,13 +50,13 @@ const About = () => {
     ));
 
   return (
-    <div className="flex flex-col justify-center items-center py-8">
+    <div className="flex flex-col justify-center items-center py-8 gap-4">
   <motion.h1 className="text-4xl font-bold text-center" animate={controls}>
     {renderText("WHY ME ?")}
   </motion.h1>
   <motion.p className="text-lg mt-4 text-center max-w-3xl" animate={controls}>
     {renderText(
-      "Since starting my career as a software engineer at 19, I’ve been fueled by a relentless passion for technology and innovation. I specialize in transforming visionary ideas into cutting-edge solutions, blending creativity with technical prowess to drive meaningful impact."
+      "Since launching my software engineering career at 19, I've been fueled by a deep passion for technology and innovation. I specialize in transforming visionary concepts into cutting-edge solutions, merging creativity with technical expertise to drive meaningful change. My focus is on delivering impactful, forward-thinking results that push the boundaries of what's possible in the digital world."
     )}
   </motion.p>
 </div>

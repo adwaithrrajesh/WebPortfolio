@@ -1,7 +1,7 @@
-"use client";  
-import Link from "next/link";
+"use client";
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -10,12 +10,11 @@ const Navbar = () => {
     { id: 1, link: "home" },
     { id: 2, link: "about" },
     { id: 3, link: "skills" },
-    { id: 4, link: "experience" },
     { id: 5, link: "contact" },
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-black text-white z-10">
+    <div className="fixed top-0 left-0 w-full bg-black text-white z-50">
       <div className="flex justify-between items-center w-full h-20 px-4">
         <ul className="hidden md:flex mx-auto">
           {links.map(({ id, link }) => (
@@ -23,7 +22,17 @@ const Navbar = () => {
               key={id}
               className="px-10 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200"
             >
-              <Link href={`#${link}`}>{link}</Link>
+              <ScrollLink
+                to={link}
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80} // Adjust based on your navbar height
+                activeClass="text-white font-bold" // Highlight active section
+              >
+                {link}
+              </ScrollLink>
             </li>
           ))}
         </ul>
@@ -43,9 +52,18 @@ const Navbar = () => {
               key={id}
               className="px-4 cursor-pointer capitalize py-6 text-4xl"
             >
-              <Link onClick={() => setNav(!nav)} href={`#${link}`}>
+              <ScrollLink
+                onClick={() => setNav(!nav)}
+                to={link}
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80} // Adjust based on your navbar height
+                activeClass="text-white font-bold" // Highlight active section
+              >
                 {link}
-              </Link>
+              </ScrollLink>
             </li>
           ))}
         </ul>

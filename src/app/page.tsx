@@ -7,12 +7,20 @@ import Contact from "../components/contact";
 export default function Home() {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="flex flex-col">
-        <HomePage />
-        <About />
-        <Skills />
-        <Contact />
+        <section id="home">
+          <HomePage />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
       </div>
     </>
   );

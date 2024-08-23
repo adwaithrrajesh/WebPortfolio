@@ -15,22 +15,23 @@ const HomePage = () => {
 
   useEffect(() => {
     controls.start({
-      y: [0, -10, 0],
-      opacity: [1, 0.8, 1],
+      opacity: 1,
+      y: 0,
       transition: {
-        duration: 0.2,
-        ease: "easeInOut",
+        duration: 1,
+        ease: "easeOut",
       },
     });
   }, [controls]);
 
-  const calculateLetterColor = (index: number) => {
-    const offset = 10;
+  const calculateColor = (index: number) => {
+    const offset = 1;
     const scrollPosition = scrollY - offset;
-    const letterTransitionPoint = index * 2;
+    const letterTransitionPoint = index * 1;
 
     if (scrollPosition >= letterTransitionPoint) {
-      const greyValue = 200 - (scrollPosition - letterTransitionPoint) * 2;
+      // Ensure greyValue stays within a light grey range
+      const greyValue = Math.max(150 - (scrollPosition - letterTransitionPoint) * 2, 150);
       return `rgb(${greyValue}, ${greyValue}, ${greyValue})`;
     } else {
       return `rgb(255, 255, 255)`;
@@ -49,8 +50,8 @@ const HomePage = () => {
           ease: "easeOut",
         }}
         style={{
-          color: calculateLetterColor(index),
-          transition: "color 0.3s ease",
+          color: calculateColor(index),
+          transition: 'color 0.3s ease',
         }}
       >
         {char}
@@ -59,62 +60,77 @@ const HomePage = () => {
 
   const initialAnimation = {
     y: -50,
-    opacity: 0,
+    opacity: 1,
   };
 
   const scrollAnimation = {
     y: 0,
-    opacity: scrollY > 50 ? 0 : 1,
+    opacity: 1,
     transition: {
       duration: 0.5,
       ease: "easeOut",
     },
   };
 
+  // Calculate button colors based on scroll
+  const buttonTextColor = scrollY > 0 ? calculateColor(0) : 'black';
+  const buttonBorderColor = scrollY > 0 ? calculateColor(0) : 'black';
+  const buttonBackgroundColor = calculateColor(0); // Use grey for background based on scroll
+
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center mb-0"> {/* Adjusted margin-bottom */}
-    <motion.div
-      className="my-8 w-40 h-40 md:w-60 md:h-60 lg:w-80 lg:h-80 rounded-full overflow-hidden"
-      initial={initialAnimation}
-      animate={scrollAnimation}
-      transition={{
-        delay: 0.3,
-        duration: 0.5,
-        ease: "easeOut",
-      }}
-    >
-      <img
-        src="https://cdn.britannica.com/47/188747-050-1D34E743/Bill-Gates-2011.jpg"
-        alt="Profile"
-        className="object-cover w-full h-full"
-      />
-      <br />
-    </motion.div>
-  
-    <motion.h1 className="text-3xl font-bold text-[#E0B0FF]" animate={controls}>
-      {renderText("Hi, I'm Adwaith – Shaping the Future with Software")}
-    </motion.h1>
-  
-    <motion.p className="text-lg mt-4 text-[#E0B0FF]" animate={controls}>
-      {renderText(
-        "Turning visionary ideas into tangible realities, one line of code at a time."
-      )}
-    </motion.p>
-  
-    <motion.button className="mt-8 px-6 py-3 bg-darkblue-500 text-white font-semibold rounded-full flex items-center justify-center shadow-lg border border-white transition duration-300 ease-in-out"
-      initial={initialAnimation}
-      animate={scrollAnimation}
-      whileHover={{
-        scale: 1.5,
-        boxShadow: "0px 0px 15px rgba(255, 255, 255, 0.5)",
-      }}
-      transition={{ delay: 1, duration: 0.5, ease: "easeOut" }}
-    >
-      <FaPhoneAlt className="mr-2" />
-      Contact Me
-    </motion.button>
-  </div>
-  
+    <div className="min-h-screen flex flex-col justify-center items-center "> {/* Adjusted margin-bottom */}
+      <motion.div
+        className="my-8 w-40 h-40 md:w-60 md:h-60 lg:w-80 lg:h-80 rounded-full overflow-hidden"
+        initial={initialAnimation}
+        animate={scrollAnimation}
+        transition={{
+          delay: 0.3,
+          duration: 0.5,
+          ease: "easeOut",
+        }}
+        style={{
+          backgroundColor: calculateColor(0), // Apply color based on scroll position
+        }}
+      >
+        <img
+          src="https://res.cloudinary.com/dayrfpqyl/image/upload/v1724437064/IMG_1472_qe4yht.jpg"
+          alt="Profile"
+          className="object-cover w-full h-full"
+          style={{
+            filter: `brightness(${1 - (scrollY / 1000)})`, // Adjust brightness based on scroll position
+          }}
+        />
+        <br />
+      </motion.div>
+
+      <motion.h1 className="text-3xl font-bold" animate={controls}>
+        {renderText("Hi, I'm Adwaith – Shaping the Future with Software")}
+      </motion.h1>
+
+      <motion.p className="text-lg mt-4" animate={controls}>
+        {renderText(
+          "Turning visionary ideas into tangible realities, one line of code at a time."
+        )}
+      </motion.p>
+
+      <motion.button className="mt-8 px-6 py-3 font-semibold rounded-full flex items-center justify-center border transition duration-300 ease-in-out"
+        initial={initialAnimation}
+        animate={scrollAnimation}
+        whileHover={{
+          scale: 1.5,
+          boxShadow: "0px 0px 15px rgba(255, 255, 255, 0.5)",
+        }}
+        transition={{ delay: 1, duration: 0.5, ease: "easeOut" }}
+        style={{
+          backgroundColor: buttonBackgroundColor, // Apply color based on scroll position
+          color: 'black', // Button text color
+          borderColor: buttonBorderColor, // Button border color
+        }}
+      >
+        <FaPhoneAlt className="mr-2" />
+        Contact Me
+      </motion.button>
+    </div>
   );
 };
 
