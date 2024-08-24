@@ -10,7 +10,7 @@ const skills = [
   {
     title: 'Frontend Web Development',
     description: 'Building responsive and accessible user interfaces.',
-    icons: [<FaReact key="react" />, <SiNextdotjs key="next" />]
+    icons: [<FaReact key="react" />, <SiNextdotjs key="next" />,<SiTypescript key="typescript" />]
   },
   {
     title: 'Backend Development',

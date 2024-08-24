@@ -7,6 +7,7 @@ import Skills from "../components/skills";
 import Contact from "../components/contact";
 import { useEffect, useState } from "react";
 import Loading from "@/components/loading";
+import { Experience } from "@/components/experience";
 
 export default function Home() {
 
@@ -38,6 +39,9 @@ export default function Home() {
         </section>
         <section id="skills">
           <Skills />
+        </section>
+        <section id="experience">
+          <Experience />
         </section>
         <section id="contact">
           <Contact />
