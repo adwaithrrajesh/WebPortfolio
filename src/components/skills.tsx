@@ -4,34 +4,34 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaReact, FaNodeJs, FaDocker } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs} from 'react-icons/si';
+import { SiTypescript, SiNextdotjs } from 'react-icons/si';
 
 const skills = [
   {
     title: 'Frontend Web Development',
     description: 'Building responsive and accessible user interfaces.',
-    icons: [<FaReact key="react" />, <SiNextdotjs key="next" />,<SiTypescript key="typescript" />]
+    icons: [<FaReact key="react" />, <SiNextdotjs key="next" />, <SiTypescript key="typescript" />],
   },
   {
     title: 'Backend Development',
     description: 'Creating robust and scalable server-side applications.',
-    icons: [<FaNodeJs key="node" />, <SiTypescript key="typescript" />]
+    icons: [<FaNodeJs key="node" />, <SiTypescript key="typescript" />],
   },
   {
     title: 'Mobile Application Development',
     description: 'Crafting smooth and efficient mobile experiences.',
-    icons: []
+    icons: [],
   },
   {
     title: 'DevOps',
     description: 'Automating and optimizing development pipelines.',
-    icons: []
+    icons: [<FaDocker key="docker" />],
   },
   {
     title: 'System Design',
-    description: 'Most efficient and optimised system design.',
-    icons: []
-  }
+    description: 'Most efficient and optimized system design.',
+    icons: [],
+  },
 ];
 
 const Skills: React.FC = () => {
@@ -55,6 +55,10 @@ const Skills: React.FC = () => {
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.2 } },
+    float: {
+      y: [0, -10, 0], // Floating effect by moving the card up and down
+      transition: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
+    },
   };
 
   return (
@@ -79,6 +83,8 @@ const Skills: React.FC = () => {
             initial="hidden"
             animate={controls}
             variants={cardVariants}
+            whileHover={{ scale: 1.05 }} // Additional hover effect
+            whileInView="float" // Apply the floating effect
           >
             {/* Multi-Layered Background Effect */}
             <div className="absolute inset-0 rounded-xl overflow-hidden">

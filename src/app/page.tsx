@@ -7,7 +7,7 @@ import Skills from "../components/skills";
 import Contact from "../components/contact";
 import { useEffect, useState } from "react";
 import Loading from "@/components/loading";
-import { Experience } from "@/components/experience";
+import Experience  from "@/components/experience";
 
 export default function Home() {
 
