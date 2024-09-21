@@ -21,9 +21,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         subject,
         html: `
           <div style="max-width: 600px; margin: 20px auto; padding: 20px; font-family: Arial, sans-serif; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #f9f9f9;">
-            <div style="text-align: center; padding: 10px 0;">
-              <img src="https://via.placeholder.com/100x100.png?text=Logo" alt="Logo" style="width: 80px; border-radius: 50%;" />
-            </div>
             <div style="text-align: center; margin-bottom: 20px;">
               <h2 style="color: #333; font-size: 24px; margin: 0;">New Message Received</h2>
               <p style="color: #555; font-size: 16px; margin-top: 5px;">You have a new message from <strong>${email}</strong></p>
