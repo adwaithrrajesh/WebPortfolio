@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { BriefcaseIcon } from '@heroicons/react/solid';
+import { BriefcaseIcon } from '@heroicons/react/24/solid';
 
-const experiences = [
+
+interface ExperienceData {
+  company: string;
+  duration: string;
+  icon: string;
+  projects: string[];
+}
+
+const experiences: ExperienceData[] = [
   {
     company: "Packapeer Private Limited",
     duration: "Nov 2022 - Dec 2023",
@@ -26,37 +34,15 @@ const experiences = [
   },
 ];
 
-const Experience = () => {
-  return (
-    <div className="py-16  bg-black">
-      <h2 className="text-3xl font-bold text-center text-white mb-12">
-        Professional Experience
-      </h2>
-      <div className="container mx-auto px-4">
-        <div className="relative flex flex-col md:flex-row md:justify-start md:space-x md:ml-4">
-          {experiences.map((exp, index) => (
-            <ExperienceCard
-              key={index}
-              company={exp.company}
-              duration={exp.duration}
-              projects={exp.projects}
-              icon={exp.icon}
-              index={index}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+interface ExperienceCardProps {
+  company: string;
+  duration: string;
+  icon: string;
+  projects: string[];
+  index: number;
+}
 
-const ExperienceCard = ({
-  company,
-  duration,
-  projects,
-  icon,
-  index,
-}) => {
+const ExperienceCard: FC<ExperienceCardProps> = ({ company, duration, icon, projects, index }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -78,15 +64,13 @@ const ExperienceCard = ({
             alt={`${company} logo`}
             className="w-12 h-12 mr-4 object-contain"
             loading="lazy"
-            onError={(e) => e.target.style.display = 'none'}
+            onError={(e) => (e.currentTarget.style.display = 'none')}
           />
         ) : (
           <BriefcaseIcon className="w-12 h-12 text-blue-400 mr-4" />
         )}
         <div>
-          <h3 className="text-2xl font-semibold text-white">
-            {company}
-          </h3>
+          <h3 className="text-2xl font-semibold text-white">{company}</h3>
           <p className="text-gray-400">{duration}</p>
         </div>
       </div>
@@ -103,6 +87,31 @@ const ExperienceCard = ({
         ))}
       </ul>
     </motion.div>
+  );
+};
+
+
+const Experience: FC = () => {
+  return (
+    <div className="py-16 bg-black">
+      <h2 className="text-3xl font-bold text-center text-white mb-12">
+        Professional Experience
+      </h2>
+      <div className="container mx-auto px-4">
+        <div className="relative flex flex-col md:flex-row md:justify-start md:space-x md:ml-4">
+          {experiences.map((exp, index) => (
+            <ExperienceCard
+              key={index}
+              company={exp.company}
+              duration={exp.duration}
+              projects={exp.projects}
+              icon={exp.icon}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

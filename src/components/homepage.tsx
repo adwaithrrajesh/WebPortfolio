@@ -93,11 +93,11 @@ const HomePage = () => {
         }}
       >
         <img
-          src="https://res.cloudinary.com/dayrfpqyl/image/upload/v1724437064/IMG_1472_qe4yht.jpg"
+          src="https://res.cloudinary.com/dayrfpqyl/image/upload/v1726901781/Untitled/IMG_0207_mnwz8v.jpg"
           alt="Profile"
           className="object-cover w-full h-full"
           style={{
-            filter: `brightness(${1 - (scrollY / 1000)})`, // Adjust brightness based on scroll position
+            filter: `brightness(${1 - (scrollY / 1000)})`
           }}
         />
         <br />
