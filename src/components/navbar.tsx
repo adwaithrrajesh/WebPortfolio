@@ -3,14 +3,19 @@ import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link as ScrollLink } from "react-scroll";
 
-const Navbar = () => {
-  const [nav, setNav] = useState(false);
+interface Link {
+  id: number;
+  link: string;
+}
 
-  const links = [
+const Navbar: React.FC = () => {
+  const [nav, setNav] = useState<boolean>(false);
+
+  const links: Link[] = [
     { id: 1, link: "home" },
     { id: 2, link: "about" },
     { id: 3, link: "skills" },
-    {id:4, link:"experience"},
+    { id: 4, link: "experience" },
     { id: 5, link: "contact" },
   ];
 
