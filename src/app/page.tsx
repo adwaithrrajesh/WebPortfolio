@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Navbar from "../components/navbar";
 import HomePage from "../components/homepage";
 import About from "../components/about";
